@@ -1,0 +1,9 @@
+[project]
+name = "f-tables"
+version = "0.1.0"
+description = "calculate tables in 1st physics labaratory work"
+authors = [
+    { name = "msx128", email = "msx128@proton.me" }
+]
+requires-python = ">=3.14"
+dependencies = []
