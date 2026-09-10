@@ -6,6 +6,7 @@ TU = 0.02
 RA = 0.2
 RV = 2500
 
+# parent with core logic
 class Calculate(ABC):
     @abstractmethod
     def cr(self):
@@ -44,6 +45,7 @@ class Calculate(ABC):
         print("θ:", self.teto)
         print("--------------------")
 
+# r-calculation differences
 class A(Calculate):
     def cr(self) -> float:
         return round(self.usi-RA, 1)
@@ -51,7 +53,8 @@ class A(Calculate):
 class B(Calculate):
     def cr(self) -> float:
         return round((self.usi**-1-1/RV)**-1, 1)
-    
+
+# run
 if __name__ == "__main__":
     A().run()
     B().run()
