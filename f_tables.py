@@ -50,7 +50,7 @@ class A(Calculate):
 
 class B(Calculate):
     def cr(self) -> float:
-        return round((self.i/self.u-1/RV)**-1, 1)
+        return round((self.usi**-1-1/RV)**-1, 1)
     
 if __name__ == "__main__":
     A().run()
