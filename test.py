@@ -1,6 +1,7 @@
 import pytest
 from f_tables import A, B, Calculate 
 
+# may add full table test
 class Test:
     def test_A_calculation(self):
         a = A()
