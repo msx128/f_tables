@@ -19,13 +19,15 @@ class Calculate(ABC):
         self.usi = 0.0
         self.r = 0.0
         self.teto = 0.0
+        self.arr_r = []
 
-    def run(self) -> None:
+    def run(self) -> list[float]:
         for _ in range(10):
             print("U:", self.u)
             self.i = self.input_provider("I: ")
             self.calculate()
             self.u = round(self.u+0.05, 2)
+        return self.arr_r
 
     def _default_input(self, promt: str) -> float:
         while True:
@@ -40,6 +42,7 @@ class Calculate(ABC):
         print("U/I:", self.usi)
         self.r = self.cr()
         print("R:", self.r)
+        self.arr_r.append(self.r)
         teto = self.r*(TU/self.u+TI/self.i)
         self.teto = round(teto,1)
         print("θ:", self.teto)
@@ -54,7 +57,25 @@ class B(Calculate):
     def cr(self) -> float:
         return round((self.usi**-1-1/RV)**-1, 1)
 
+def ro(rsr: float, d: float, l: float):
+    return (rsr * 3.14 * d*d) / (4 * l)
+
+def h():
+    # fix it?
+    print("Пожалуйста диаметр без 10**-3")
+    print("В ответ просто добавить значение ро и умножить на 10**-6")
+    zaglushka = A()
+    d = Calculate._default_input(zaglushka,"D: ")
+    l = Calculate._default_input(zaglushka,"l: ")
+    return (d, l)
+    
 # run
 if __name__ == "__main__":
-    A().run()
-    B().run()
+    n = A().run()
+    n2 = B().run()
+    n.extend(n2)
+    rsr = round(sum(n)/20, 3)
+    print(rsr)
+    print(round(rsr, 1))
+    d, l = h()
+    print("ρ:", ro(rsr, d, l))

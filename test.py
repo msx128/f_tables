@@ -1,5 +1,6 @@
 import pytest
 from f_tables import A, B, Calculate 
+from f_tables import ro
 
 # may add full table test
 class Test:
@@ -20,3 +21,8 @@ class Test:
         assert b.usi == 10.15
         assert b.r == 10.2
         assert b.teto == 0.9
+
+    def test_ro(self):
+        res = ro(10.0, 0.36, 0.93)
+        assert round(res, 2) == 1.09
+        
